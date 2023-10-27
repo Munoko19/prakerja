@@ -23,21 +23,9 @@ const getDataById = (id) => {
   return dbPool.query(query, [id]);
 };
 
-const updateData = (id, name, email, password) => {
-  let updatedAt = new Date();
-
-  const query =
-    "UPDATE users SET user_id = ?, name = ?, email = ?, password = ?, updated_at =? ";
-  const values = [id, name, email, password, updatedAt];
-
-  return dbPool.query(query, values);
-};
-
-const deleteData = (user_id) => {
+const deleteData = (id) => {
   const query = "DELETE FROM users WHERE user_id = ?";
-  const values = [user_id];
 
-  return dbPool.query(query, values);
+  return dbPool.query(query, [id]);
 };
-
-export { getData, createData, getDataById, updateData, deleteData };
+export { getData, createData, getDataById, deleteData };
